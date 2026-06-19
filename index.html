@@ -561,6 +561,42 @@
     flex-wrap:wrap;
   }
 
+  /* ---------- beta signup form ---------- */
+  .signup-form{
+    margin:48px auto 0;
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    max-width:520px;
+  }
+  .signup-input{
+    flex:1;
+    min-width:240px;
+    padding:14px 20px;
+    font-size:14px;
+    letter-spacing:.04em;
+    background:var(--bg-1);
+    border:1px solid var(--line);
+    color:var(--ink);
+    font-family:inherit;
+  }
+  .signup-input::placeholder{ color:var(--ink-dim); }
+  .signup-input:focus{ outline:none; border-color:var(--orange); }
+  .signup-form button{
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .signup-note{
+    margin-top:18px;
+    font-size:13px;
+    color:var(--ink-dim);
+    text-align:center;
+  }
+  .signup-note.error{ color:var(--orange); }
+  .signup-note.success{ color:var(--cyan); }
+
   /* ---------- footer ---------- */
   footer{
     padding:60px 0;
@@ -626,10 +662,10 @@
           <a href="#features">Modules</a>
           <a href="#showcase">Workflow</a>
           <a href="#stocks">Film Stocks</a>
-          <a href="#texture">Texture</a>
-          <a href="#proof">Trusted By</a>
+          <a href="#texture">Chroma Pulp™</a>
+          <a href="#license">License</a>
         </div>
-        <a href="#download" class="btn btn-solid">Download Trial</a>
+        <a href="#download" class="btn btn-solid">Download Beta</a>
       </nav>
     </div>
   </header>
@@ -637,16 +673,16 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container">
-      <div class="kicker"><span class="dot"></span> OFX Plugin for DaVinci Resolve · v2.0</div>
+      <div class="kicker"><span class="dot"></span> OFX Plugin for DaVinci Resolve · v1.2 Public Beta</div>
       <h1>Match the look.<br><span class="accent">Keep the soul.</span></h1>
       <p class="hero-sub">
         AI-powered cinematic look matching, film grain, texture emulation
         and finishing tools — built directly into your DaVinci Resolve
-        timeline.
+        timeline, in the "Grade &amp; Grain" effects category.
       </p>
       <div class="hero-cta">
-        <a href="#download" class="btn btn-solid">Download Trial</a>
-        <a href="#showcase" class="btn">Watch Demo</a>
+        <a href="#download" class="btn btn-solid">Download Beta</a>
+        <a href="#showcase" class="btn">See What's Inside</a>
       </div>
 
       <div class="hero-meta">
@@ -656,15 +692,15 @@
         </div>
         <div class="item">
           <div class="num">02 — Texture</div>
-          <div class="val">Texture Coat™</div>
+          <div class="val">Chroma Pulp™</div>
         </div>
         <div class="item">
-          <div class="num">03 — Emulsion</div>
-          <div class="val">Film Grain</div>
+          <div class="num">03 — Signature</div>
+          <div class="val">Look Signature</div>
         </div>
         <div class="item">
-          <div class="num">04 — Finish</div>
-          <div class="val">Print Finish</div>
+          <div class="num">04 — Access</div>
+          <div class="val">Licensed Beta</div>
         </div>
       </div>
     </div>
@@ -694,30 +730,30 @@
         </div>
         <div class="feature-card reveal">
           <div class="feature-index">02 / 04</div>
-          <h3><span class="swatch" style="background:var(--cyan)"></span>Texture Coat<span class="tm">™</span></h3>
+          <h3><span class="swatch" style="background:var(--cyan)"></span>Chroma Pulp<span class="tm">™</span></h3>
           <p>
-            Capture texture, grain, softness and atmosphere from a
-            reference image and apply it as emotional texture — not just
-            a color shift. The director's override for everything that
-            color alone can't express.
+            The integrated grading core — exposure, highlight rolloff,
+            shadow knee and creative veto controls, with reference
+            matching built directly in. Push the AI's read, or override
+            it shot by shot.
           </p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-index">03 / 04</div>
-          <h3><span class="swatch" style="background:var(--yellow)"></span>Film Grain</h3>
+          <h3><span class="swatch" style="background:var(--yellow)"></span>Look Signature</h3>
           <p>
-            Authentic motion picture grain, modeled from real emulsions.
-            Kodak. Fuji. Custom stocks. Independent control over amount,
-            size, halation and bloom.
+            Analyze a reference frame's contrast and saturation signature,
+            preview the result, and export it as a .cube LUT for use
+            anywhere in your pipeline — with adjustable global blend.
           </p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-index">04 / 04</div>
-          <h3><span class="swatch" style="background:var(--blue)"></span>Print Finish</h3>
+          <h3><span class="swatch" style="background:var(--blue)"></span>Film Grain</h3>
           <p>
-            Film-inspired density, highlight rolloff and shadow character
-            — the print-like finishing pass that brings everything
-            together into a cohesive, motion-picture image.
+            Authentic motion picture grain, modeled from real emulsions.
+            Kodak. Fuji. Custom stocks. Independent control over amount,
+            size, halation and bloom.
           </p>
         </div>
       </div>
@@ -821,19 +857,19 @@
     <div class="container">
       <div class="editorial">
         <div class="reveal">
-          <div class="eyebrow">Texture Coat™</div>
+          <div class="eyebrow">Chroma Pulp™</div>
           <div class="big-type">
             Color<br>
             <span>tells the story.</span><br>
-            Texture<br>
+            Chroma Pulp<br>
             makes it<br>
             <span>believable.</span>
           </div>
           <p class="lead">
-            Two images can share an identical grade and feel completely
-            different. Texture Coat™ isolates the atmosphere, softness
-            and grain structure of a reference — and recoats your image
-            with it, independent of color.
+            Chroma Pulp™ is the heart of the grade — exposure, highlight
+            rolloff, shadow knee and a creative veto layer, all driven by
+            the same reference-matching engine. AI proposes the grade,
+            you keep final say on every control.
           </p>
         </div>
         <div class="editorial-visual reveal">
@@ -846,18 +882,38 @@
     </div>
   </section>
 
-  <!-- ============ SOCIAL PROOF ============ -->
-  <section class="section" id="proof">
+  <!-- ============ LICENSE / BETA ============ -->
+  <section class="section" id="license">
     <div class="container">
-      <div class="eyebrow reveal">Trusted On Set And In The Bay</div>
-      <h2 class="reveal">Used by colorists, DPs and post houses worldwide.</h2>
+      <div class="eyebrow reveal">Beta Access</div>
+      <h2 class="reveal">Licensed beta, built into the plugin.</h2>
+      <p class="lead reveal">
+        Every install ships with a "License" group right in the Inspector
+        — enter your key, hit Validate, and you're unlocked. The panel
+        shows your activation status, days remaining until expiry, and
+        the installed plugin version (currently 1.2), and you can switch
+        to a new key at any time with "Change License".
+      </p>
 
-      <div class="proof-grid">
-        <div class="proof-cell reveal">STUDIO A24-ISH</div>
-        <div class="proof-cell reveal">REDLINE POST</div>
-        <div class="proof-cell reveal">NORTHSTAR FILMS</div>
-        <div class="proof-cell reveal">LUMEN COLOR CO.</div>
-        <div class="proof-cell reveal">MERIDIAN GRADE</div>
+      <div class="feature-grid" style="margin-top:60px;">
+        <div class="feature-card reveal">
+          <div class="feature-index">macOS · Apple Silicon</div>
+          <h3><span class="swatch" style="background:var(--orange)"></span>Installer Package</h3>
+          <p>
+            Run the .pkg, then enable the effect under
+            <em>OpenFX &gt; Grade &amp; Grain &gt; Grade + Grain</em> in
+            DaVinci Resolve Studio's Effects Library.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-index">macOS · Manual Install</div>
+          <h3><span class="swatch" style="background:var(--cyan)"></span>Zipped Bundle</h3>
+          <p>
+            Prefer to manage your own OFX folder? Grab the .zip and copy
+            GradeAndGrain.ofx.bundle into
+            /Library/OFX/Plugins/ yourself.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -865,12 +921,28 @@
   <!-- ============ FINAL CTA ============ -->
   <section class="final" id="download">
     <div class="container">
-      <div class="eyebrow reveal" style="justify-content:center;">The Finishing Tool</div>
-      <h2 class="reveal">The finishing tool<br>for filmmakers.</h2>
-      <div class="final-cta reveal">
-        <a href="#" class="btn btn-solid">Download Trial</a>
-        <a href="#" class="btn">Buy Now</a>
+      <div class="eyebrow reveal" style="justify-content:center;">v1.2 Public Beta</div>
+      <h2 class="reveal">Grade the look.<br>Keep the grain.</h2>
+
+      <form id="beta-signup" class="signup-form reveal" novalidate>
+        <input type="email" name="email" id="beta-email" class="signup-input"
+               placeholder="you@studio.com" required />
+        <button type="submit" class="btn btn-solid">Get Beta Access</button>
+      </form>
+      <p id="signup-note" class="signup-note reveal">
+        Join the beta list to get the download link plus update emails as
+        new builds ship. No spam, unsubscribe anytime.
+      </p>
+
+      <div id="download-links" class="final-cta reveal" hidden>
+        <a href="downloads/GradeAndGrain-1.2.pkg" class="btn btn-solid" download>Download .pkg</a>
+        <a href="downloads/GradeAndGrain-1.2-macOS.zip" class="btn" download>Download .zip</a>
       </div>
+      <p class="lead reveal" style="margin:32px auto 0; text-align:center;">
+        This beta build is ad-hoc signed and not yet notarized. If macOS
+        blocks it on first run, go to System Settings &gt; Privacy &amp;
+        Security and choose "Open Anyway".
+      </p>
     </div>
   </section>
 
@@ -894,6 +966,62 @@
   </footer>
 
   <script>
+    // Beta signup gate. Submits the email to a Formspree endpoint (replace
+    // FORMSPREE_ID below with your own form ID from formspree.io), then
+    // reveals the download links. Remembers opt-in via localStorage so
+    // returning visitors skip straight to the downloads.
+    const FORMSPREE_ID = 'mkoakdgn';
+
+    const signupForm = document.getElementById('beta-signup');
+    const signupNote = document.getElementById('signup-note');
+    const downloadLinks = document.getElementById('download-links');
+
+    function unlockDownloads() {
+      signupForm.hidden = true;
+      downloadLinks.hidden = false;
+    }
+
+    if (localStorage.getItem('gg-beta-signup') === 'true') {
+      unlockDownloads();
+      signupNote.textContent = "You're on the list — here's the beta build.";
+      signupNote.classList.add('success');
+    }
+
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('beta-email').value.trim();
+      if (!email) return;
+
+      const submitBtn = signupForm.querySelector('button');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      try {
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('source', 'gradeandgrain-beta');
+
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData,
+        });
+
+        if (!res.ok) throw new Error('Signup failed');
+
+        localStorage.setItem('gg-beta-signup', 'true');
+        signupNote.textContent = "You're in! Here's the beta build.";
+        signupNote.classList.remove('error');
+        signupNote.classList.add('success');
+        unlockDownloads();
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get Beta Access';
+        signupNote.textContent = "Something went wrong — please try again.";
+        signupNote.classList.add('error');
+      }
+    });
+
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
