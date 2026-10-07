@@ -16,7 +16,7 @@
  }
  toggle.addEventListener('click',()=>{paused=!paused;refreshHero()});
  selectors.forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.preview;document.querySelector('.motion-screen').style.backgroundImage='url("'+b.dataset.poster+'")';hero.title='Muted portfolio preview: '+b.dataset.title;document.getElementById('motion-watch').dataset.film=selected;selectors.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));refreshHero()}));
- if('IntersectionObserver' in window)new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;refreshHero()},{threshold:.15}).observe(hero);else{inView=true;refreshHero()}
+ if('IntersectionObserver' in window)new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;refreshHero()},{threshold:.15}).observe(document.querySelector('.motion-screen'));else{inView=true;refreshHero()}
  document.addEventListener('visibilitychange',refreshHero);
  reduced.addEventListener('change',()=>{paused=reduced.matches;refreshHero()});
  document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{
@@ -27,9 +27,19 @@
  modal.addEventListener('click',e=>{if(e.target===modal){const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)modal.close()}});
  document.querySelectorAll('.film-card').forEach(card=>{
   const frame=card.querySelector('iframe');
-  const start=()=>{if(!reduced.matches&&!modal.open){frame.hidden=false;frame.src=previewURL(frame.dataset.filmPreview)}};
+  const start=()=>{if(!reduced.matches&&!modal.open){frame.hidden=false;const url=previewURL(frame.dataset.filmPreview);if(frame.getAttribute('src')!==url)frame.src=url}};
   const stop=()=>{frame.removeAttribute('src');frame.hidden=true};
-  card.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')start()});card.addEventListener('pointerleave',stop);card.addEventListener('focusin',start);card.addEventListener('focusout',stop);card.querySelector('button').addEventListener('click',stop);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{if(entries[0].isIntersecting)start();else stop()},{threshold:.2}).observe(card);
+  card.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')start()});card.addEventListener('focusin',start);card.querySelector('button').addEventListener('click',stop);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
+ });
+ window.addEventListener('message',event=>{
+  if(event.origin!=='https://player.vimeo.com')return;
+  const frame=[hero,...document.querySelectorAll('[data-film-preview]')].find(f=>f.contentWindow===event.source);
+  if(!frame||frame.hidden)return;
+  let data=event.data;try{if(typeof data==='string')data=JSON.parse(data)}catch{return}
+  const send=(method,value)=>frame.contentWindow.postMessage(JSON.stringify({method,value}),'https://player.vimeo.com');
+  if(data?.event==='ready'){send('setLoop',true);send('setVolume',0);send('addEventListener','ended');send('play')}
+  if(data?.event==='ended'){send('setCurrentTime',0);send('play')}
  });
  refreshHero();
 })();
