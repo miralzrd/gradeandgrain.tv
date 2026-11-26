@@ -148,13 +148,16 @@
       signupNote.classList.remove('error', 'success');
       try {
         const data = new FormData(signupForm);
+        data.set('access_key', '6379a6e6-63ed-4190-a87c-7d8775b3bf89');
+        data.set('from_name', 'Grade + Grain');
         data.append('source', 'Grade + Grain beta tester signup');
-        const response = await fetch('https://formspree.io/f/mkoakdgn', {
+        data.set('subject', 'Grade + Grain beta signup');
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { Accept: 'application/json' },
           body: data
         });
-        if (!response.ok) throw new Error('Submission failed');
+        if (!response.ok || (await response.json()).success !== true) throw new Error('Submission failed');
         signupForm.hidden = true;
         signupNote.textContent = "Thank you! Your beta request has been sent. Watch your inbox for updates.";
         signupNote.classList.add('success');
